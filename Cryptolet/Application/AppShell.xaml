@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:wallet="clr-namespace:Cryptolet.Modules.Wallet"
+       xmlns:asset="clr-namespace:Cryptolet.Modules.Assets"
+       xmlns:transaction="clr-namespace:Cryptolet.Modules.Transactions"
+       xmlns:controls="clr-namespace:Cryptolet.Common.Controls"
        Title="Cryptolet"
-       x:Class="Cryptolet.AppShell">
+       x:Class="Cryptolet.AppShell"
+       FlyoutBackgroundColor="#804FB3"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+       FlyoutVerticalScrollMode="Enabled"
+       
+       >
+
+    <Shell.BackgroundColor>#804FB3</Shell.BackgroundColor>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader/>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Portfolio"
+                      ContentTemplate="{DataTemplate wallet:WalletView}"></ShellContent>
+    </FlyoutItem>
+    
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Assets"
+                      ContentTemplate="{DataTemplate asset:AssetsView}"></ShellContent>
+    </FlyoutItem>
+
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
+                Title="Transactions">
+        <Tab Icon="all_tab.png"
+             Title="All Transactions">
+            <ShellContent 
+                      ContentTemplate="{DataTemplate transaction:TransactionsView}"></ShellContent>
+        </Tab>
+        <Tab Icon="deposited_tab.png"
+             Title="Deposited">
+            <ShellContent
+                      ContentTemplate="{DataTemplate transaction:DepositedTransactionsView}">
+            </ShellContent>
+            </Tab>
+        <Tab Icon="withdrawn_tab.png"
+             Title="Withdrawn">
+            <ShellContent
+                      ContentTemplate="{DataTemplate transaction:WithdrawnTransactionsView}">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <MenuItem Text="Logout" Command="{Binding SignOutCommand}" />
 </Shell>
