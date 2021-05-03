@@ -1,6 +1,4 @@
-﻿using Cryptolet.Services;
-using Cryptolet.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,8 +10,6 @@ namespace Cryptolet
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
