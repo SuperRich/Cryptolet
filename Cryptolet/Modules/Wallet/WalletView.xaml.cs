@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace Cryptolet.Modules.Wallet
         public WalletView()
         {
             InitializeComponent();
+            BindingContext = App.Container.Resolve<WalletViewModel>();
+        }
+
+        protected override async void OnAppearing()
+        {
+           base.OnAppearing();
+           await (BindingContext as WalletViewModel).InitializeAsync(false);
         }
     }
 }

@@ -13,7 +13,7 @@
        
        >
 
-    <Shell.BackgroundColor>#804FB3</Shell.BackgroundColor>
+   <Shell.BackgroundColor>#804FB3</Shell.BackgroundColor>
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader/>
