@@ -19,7 +19,8 @@
         <controls:FlyoutHeader/>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"
+                Route="portfolio">
         <ShellContent Title="Portfolio"
                       ContentTemplate="{DataTemplate wallet:WalletView}"></ShellContent>
     </FlyoutItem>

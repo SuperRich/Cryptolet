@@ -68,7 +68,18 @@ namespace Cryptolet.Common.Controllers
                     TransactionDate = DateTime.Now,
                     Status = Constants.TRANSACTION_DEPOSITED,
                     StatusImageSource = Constants.TRANSACTION_DEPOSITED_IMAGE
-                }
+                },
+                 new Transaction
+                {
+                    Amount = 0.2M,
+                    Symbol = "BTC",
+                    DollarValue = 500,
+                    TransactionDate = DateTime.Now,
+                    Status = Constants.TRANSACTION_WITHDRAWN,
+                    StatusImageSource = Constants.TRANSACTION_WITHDRAWN_IMAGE
+                },
+
+
         };
         public Task<List<Coin>> GetCoins(bool forceReload = false)
         {

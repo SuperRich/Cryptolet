@@ -2,11 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cryptolet.Modules.Transactions.DepositedTransactionsView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Add"
+            Order="Primary"
+            Priority="0"
+            Command="{Binding TradeCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshTransactionsCommand}">
+            <CollectionView ItemsSource="{Binding Transactions}"
+                            SelectionMode="Single"
+                            ItemTemplate="{StaticResource TransactionCell}"
+                            SelectedItem="{Binding SelectedTransaction}"
+                            SelectionChangedCommand="{Binding TransactionsSelectedCommand}" />
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
