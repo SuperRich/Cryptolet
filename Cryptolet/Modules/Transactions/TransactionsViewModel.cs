@@ -1,6 +1,9 @@
 ﻿using Cryptolet.Common.Controllers;
 using Cryptolet.Common.Models;
+using Cryptolet.Modules.AddTransaction;
+using Cryptolet.Modules.Wallet;
 using Cryptollet.Common.Base;
+using Cryptollet.Common.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,10 +19,12 @@ namespace Cryptolet.Modules.Transactions
     {
         private IWalletController _walletController;
         private string _filter = string.Empty;
+        private INavigationService _navigationService;
 
-        public TransactionsViewModel(IWalletController walletController)
+        public TransactionsViewModel(IWalletController walletController, INavigationService navigationService)
         {
             _walletController = walletController;
+            _navigationService = navigationService;
             Transactions = new ObservableCollection<Transaction>();
         }
 
@@ -83,7 +88,7 @@ namespace Cryptolet.Modules.Transactions
 
         private async Task PerformNavigation()
         {
-            await Shell.Current.GoToAsync("addtransactions");
+            await _navigationService.InsertAsRoot<WalletViewModel>();
         }
 
 

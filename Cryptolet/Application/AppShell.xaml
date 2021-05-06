@@ -20,7 +20,7 @@
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"
-                Route="portfolio">
+                Route="WalletViewModel">
         <ShellContent Title="Portfolio"
                       ContentTemplate="{DataTemplate wallet:WalletView}"></ShellContent>
     </FlyoutItem>

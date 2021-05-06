@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Cryptolet.Modules.AddTransaction;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace Cryptolet
         {
             InitializeComponent();
             BindingContext = App.Container.Resolve<AppShellViewModel>();
+            Routing.RegisterRoute(nameof(AddTransactionViewModel), typeof(AddTransactionView));
         }
     }
 }
