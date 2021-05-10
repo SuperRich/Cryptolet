@@ -1,13 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Cryptolet.Common.Converters"
              x:Class="Cryptolet.Modules.AddTransaction.AddTransactionView"
               Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Transaction Type" 
+               Padding="10,16,10,0"/>
+            <RadioButton Content="Deposit"
+                         IsChecked="{Binding IsDeposit}"
+                         Margin="16,0,0,0" />
+            <RadioButton Content="Withdraw"
+                         IsChecked="{Binding IsDeposit, Converter={StaticResource InverseBoolConverter}, Mode=OneWay}"
+                         Margin="16,0,0,0" />
+            <Label Text="Select Asset" 
+                   Padding="10,10,10,0"/>
+            <CollectionView ItemsSource="{Binding AvailableAssets}"
+                            SelectedItem="{Binding SelectedCoin}"
+                            ItemsLayout="HorizontalList"
+                            SelectionMode="Single"
+                            HeightRequest="100"
+                            ItemTemplate="{StaticResource CoinCell}">
+            </CollectionView>
+            <Label Text="Amount"
+                   Margin="16,10,16,0"/>
+            <Entry Style="{StaticResource Input}" 
+                   Text="" 
+                   Keyboard="Numeric"
+                   Margin="16,0,16,0" />
+            <Label Text="" 
+                   Style="{StaticResource ValidationErrorLabel}"
+                   Margin="16,0,24,0" />
+            <Label Text="Transaction Date"
+                   Margin="16,10,16,0"/>
+            <DatePicker Margin="16,0,16,0"
+                        Date="{Binding TransactionDate}"
+                        Format="dd/MM/yyyy" />
+            <Button Style="{StaticResource BlueButton}"
+                    Margin="20"
+                    WidthRequest="240"
+                    Text="Add"
+                    Command="{Binding AddTransactionCommand}"/>
+
         </StackLayout>
     </ContentPage.Content>
+    
 </ContentPage>

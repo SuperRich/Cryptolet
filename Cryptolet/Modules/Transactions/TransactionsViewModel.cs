@@ -81,14 +81,14 @@ namespace Cryptolet.Modules.Transactions
 
         private async Task TransactionSelected()
         {
-            //todo
+            await _navigationService.PushAsync<AddTransactionViewModel>("id=1");
         }
 
         public ICommand TradeCommand { get => new Command(async () => await PerformNavigation()); }
 
         private async Task PerformNavigation()
         {
-            await _navigationService.InsertAsRoot<WalletViewModel>();
+            await _navigationService.PushAsync<AddTransactionViewModel>();
         }
 
 

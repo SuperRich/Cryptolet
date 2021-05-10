@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Cryptolet.Modules.Loading;
 using System;
 using System.Reflection;
 using Xamarin.Forms;
@@ -26,7 +27,7 @@ namespace Cryptolet
             //get container
             Container = builder.Build();
             //set first page
-            MainPage = new AppShell();
+            MainPage = Container.Resolve<LoadingView>();
         }
     }
 }

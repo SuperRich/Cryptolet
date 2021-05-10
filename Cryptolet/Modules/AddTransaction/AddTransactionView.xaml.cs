@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,15 @@ using Xamarin.Forms.Xaml;
 
 namespace Cryptolet.Modules.AddTransaction
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty("Id", "id")]
     public partial class AddTransactionView : ContentPage
     {
         public AddTransactionView()
         {
             InitializeComponent();
+            BindingContext = App.Container.Resolve<AddTransactionViewModel>();
         }
+
+      
     }
 }

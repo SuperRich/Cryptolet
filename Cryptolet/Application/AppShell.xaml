@@ -7,24 +7,92 @@
        xmlns:controls="clr-namespace:Cryptolet.Common.Controls"
        Title="Cryptolet"
        x:Class="Cryptolet.AppShell"
-       FlyoutBackgroundColor="#804FB3"
+       FlyoutBackgroundColor="#01184e"
        FlyoutHeaderBehavior="CollapseOnScroll"
        FlyoutVerticalScrollMode="Enabled"
        
        >
 
-   <Shell.BackgroundColor>#804FB3</Shell.BackgroundColor>
+    <!--<Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid x:Name="grid" Style="{StaticResource FlyoutItemStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon}"
+                       x:Name="img"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       TextColor="Black"
+                       Text="{Binding Title}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" >
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference grid},Path=BackgroundColor}" Value="Accent">
+                            <Setter Property="TextColor" Value="Green"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>-->
+
+    <Shell.ItemTemplate>
+        <DataTemplate >
+            <Grid x:Name="grid" Style="{StaticResource FlyoutItemStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2" />
+                    <ColumnDefinition Width="0.8*" />
+
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="1"
+        Text="{Binding Title}"
+                       FontSize="Large"
+                       TextColor="White"
+                       Margin="5"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="50">
+                </Label>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+               
+                <Label Grid.Column="1"
+                           Text="{Binding Text}"
+                           HeightRequest="50"
+                           FontSize="Large" 
+                           TextColor="White"
+                           Margin="0"
+                           VerticalTextAlignment="Start" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+
+    <Shell.BackgroundColor>#01184e</Shell.BackgroundColor>
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader/>
     </Shell.FlyoutHeader>
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"
-                Route="WalletViewModel">
+                Route="WalletViewModel"
+                >
         <ShellContent Title="Portfolio"
                       ContentTemplate="{DataTemplate wallet:WalletView}"></ShellContent>
     </FlyoutItem>
-    
+
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Assets"
                       ContentTemplate="{DataTemplate asset:AssetsView}"></ShellContent>
@@ -42,7 +110,7 @@
             <ShellContent
                       ContentTemplate="{DataTemplate transaction:DepositedTransactionsView}">
             </ShellContent>
-            </Tab>
+        </Tab>
         <Tab Icon="withdrawn_tab.png"
              Title="Withdrawn">
             <ShellContent
@@ -51,5 +119,5 @@
         </Tab>
     </FlyoutItem>
 
-    <MenuItem Text="Logout" Command="{Binding SignOutCommand}" />
+    <!--<MenuItem Text="Logout" Command="{Binding SignOutCommand}" />-->
 </Shell>

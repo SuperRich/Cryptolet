@@ -25,7 +25,7 @@ namespace Cryptollet.Common.Navigation
 
         public void GoToLoginFlow()
         {
-           // Application.Current.MainPage = new LoginShell();
+            Application.Current.MainPage = new LoginShell();
         }
 
         public Task PopAsync()
